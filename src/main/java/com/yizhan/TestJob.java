@@ -5,6 +5,33 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class TestJob implements Job {
+    private String  message;
+    private Float FloatJobValue;
+    private Double DoubleTriggerValue;
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public Float getFloatJobValue() {
+        return FloatJobValue;
+    }
+
+    public void setFloatJobValue(Float floatJobValue) {
+        FloatJobValue = floatJobValue;
+    }
+
+    public Double getDoubleTriggerValue() {
+        return DoubleTriggerValue;
+    }
+
+    public void setDoubleTriggerValue(Double doubleTriggerValue) {
+        DoubleTriggerValue = doubleTriggerValue;
+    }
 
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
@@ -56,6 +83,11 @@ public class TestJob implements Job {
          *          System.out.println("jobMsg is:" + jobMsg);//jobDetail和trigger key是相同的，trigger为优先，会覆盖掉jobDetail相同key那一个值。
          *          System.out.println("triggerDoubleValue is:" +triggerDoubleValue);
          */
+
+        //获取JobDataMap:在实现类中添加setter方法对用的JobDataMap的键值
+        System.out.println("jobFloatValue is:" + FloatJobValue);
+        System.out.println("jobMsg is:" + message);
+        System.out.println("triggerDoubleValue is:" + DoubleTriggerValue);
 
 
 
