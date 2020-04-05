@@ -9,16 +9,23 @@ public class TestScheduler {
     public static void main(String[] args) throws SchedulerException {
 
         //创建一个JobDetail实例，将该实例与 TestJob绑定
-        JobDetail jobDetail = JobBuilder.newJob(TestJob.class).withIdentity("myjob","group1").build();
-
-        System.out.println(" 【jobDetail】name:" + jobDetail.getKey().getName());
-        System.out.println(" 【jobDetail】group:" + jobDetail.getKey().getGroup());
-        System.out.println(" 【jobDetail】group:" + jobDetail.getJobClass().getName());
-
+        JobDetail jobDetail = JobBuilder.newJob(TestJob.class)
+                .withIdentity("myjob","group1")
+                .usingJobData("message","Hello myJob1")//传入参数
+                .usingJobData("FloatJobValue",3.14F)//传入参数
+                .build();
+/*****
+ *      System.out.println(" 【jobDetail】name:" + jobDetail.getKey().getName());
+ *      System.out.println(" 【jobDetail】group:" + jobDetail.getKey().getGroup());
+ *      System.out.println(" 【jobDetail】group:" + jobDetail.getJobClass().getName());
+ *
+ */
 
         //创建Trigger实例(触发job执行) 定义执行时间、会不会重复执行、或执行几次终止
         //定义该job立即执行、 并且每隔2S执行一次。
         Trigger trigger = TriggerBuilder.newTrigger().withIdentity("myTrigger","group1")
+                .usingJobData("message","Hello myTrigger1")
+                .usingJobData("DoubleTriggerValue",2.0D)
                 .startNow().withSchedule(SimpleScheduleBuilder.simpleSchedule()
                         .withIntervalInSeconds(2).repeatForever()).build();
 
