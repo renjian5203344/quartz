@@ -7,7 +7,7 @@ import org.quartz.JobExecutionException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Test5Job implements Job {
+public class Test6Job implements Job {
     @Override
     public void execute(JobExecutionContext context) throws JobExecutionException {
         //打印当前执行时间，格式为:2020-0101 00:00:00
