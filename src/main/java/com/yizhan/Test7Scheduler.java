@@ -69,6 +69,15 @@ public class Test7Scheduler {
  */
 
 
+    //scheduler执行2秒后自动挂起
+    Thread.sleep(2000L);
+    //shutdown(true)表示等待所有正在执行的job执行完毕之后，再关闭scheduler
+    //shutdown(false)即shutdown()表示直接关闭scheduler
+    scheduler.shutdown(true);
+    System.out.println("scheduler is shut down?" + scheduler.isShutdown());//打印是否停止
+
+
+
 
 
 

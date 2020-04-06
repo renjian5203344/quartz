@@ -12,11 +12,11 @@ public class Test7Job implements Job {
     public void execute(JobExecutionContext context) throws JobExecutionException {
 
 
-//        try {
-//            Thread.sleep(10000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
+       try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         /***示例三代码
          * 模拟job正在执行，scheduler运行2S后关闭。模拟执行时间超出2S(当scheduler关闭时，还有job正在执行)
