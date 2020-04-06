@@ -16,7 +16,7 @@ public class Test6Scheduler {
         System.out.println("Current time Is::"+sdf.format(date));
 
         //创建JobDetail实例，将该实例与TestJob绑定
-        JobDetail jobDetail = JobBuilder.newJob( Test5Job.class)
+        JobDetail jobDetail = JobBuilder.newJob( Test6Job.class)
                 .withIdentity("myjob","group1")
                 .build();
 
